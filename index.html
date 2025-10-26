@@ -1,4 +1,482 @@
-    <!-- Your custom script -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Our Extensive Library</title>
+    <style>
+        /* General Body & Font Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 10px 0;
+        }
+
+        .brand a {
+            font-weight: 700;
+            color: #0056b3;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            color: #343a40;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background 0.15s, color 0.15s;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .nav-links li a:hover {
+            background: #e9ecef;
+            color: #0056b3;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #343a40;
+        }
+
+        /* Header (hero area) */
+        header {
+            background-color: #ffffff;
+            padding: 12px 0;
+            border-bottom: 1px solid #dee2e6;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-hero {
+            text-align: center;
+            padding: 18px 0 8px;
+        }
+
+        .header-hero h1 {
+            font-size: 2.5em;
+            color: #0056b3;
+            margin: 0;
+        }
+
+        .header-hero p {
+            margin: 10px 0 0;
+            color: #6c757d;
+        }
+
+        /* Book Grid */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        /* Book Card */
+        .book-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .book-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+            color: #343a40;
+        }
+
+        .book-info p {
+            margin: 0 0 15px 0;
+            font-size: 0.9em;
+            color: #6c757d;
+            flex-grow: 1;
+        }
+        
+        .book-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            flex-grow: 1;
+            border: none;
+            font-size: 0.9em;
+        }
+        
+        .btn-details {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .btn-download {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        /* Modal (Popup) Styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1001; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.6);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            animation: slideIn 0.4s;
+        }
+
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-btn:hover {
+            color: black;
+        }
+
+        /* Modal Specific Styles */
+        #loginModal h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            font-size: 1.1em;
+        }
+        
+        #detailsModalContent {
+            display: flex;
+            gap: 20px;
+        }
+        
+        #modal-book-cover {
+            width: 150px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+        
+        #modal-book-details h2 {
+            margin: 0 0 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes slideIn {
+            from {transform: translateY(-50px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
+        }
+
+        /* Responsive: collapse nav on small screens */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 64px;
+                right: 20px;
+                background: #fff;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+                border-radius: 8px;
+                flex-direction: column;
+                align-items: stretch;
+                width: 200px;
+                padding: 10px;
+                display: none; /* hidden by default on mobile */
+                z-index: 1002;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li a {
+                padding: 10px;
+            }
+
+            .header-hero {
+                padding-top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar container" aria-label="Primary">
+            <div class="brand">
+                <a href="#">E-Book Universe</a>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">
+                &#9776;
+            </button>
+
+            <ul class="nav-links" id="primaryNav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">New Releases</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-hero container">
+            <h1>Our Digital Library</h1>
+            <p>Browse through our collection of 100 unique titles.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="bookGrid" class="book-grid">
+            </div>
+    </main>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeLogin">&times;</span>
+            <h2>Login Required</h2>
+            <p>Please log in to download the book demo.</p>
+            <form>
+                <div class="form-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeDetails">&times;</span>
+            <div id="detailsModalContent">
+                <img id="modal-book-cover" src="" alt="Book Cover">
+                <div id="modal-book-details">
+                    <h2 id="modal-book-title"></h2>
+                    <p id="modal-book-description"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookGrid = document.getElementById('bookGrid');
+            const loginModal = document.getElementById('loginModal');
+            const detailsModal = document.getElementById('detailsModal');
+            const closeLoginBtn = document.getElementById('closeLogin');
+            const closeDetailsBtn = document.getElementById('closeDetails');
+
+            // NAV TOGGLE
+            const navToggle = document.getElementById('navToggle');
+            const primaryNav = document.getElementById('primaryNav');
+
+            navToggle.addEventListener('click', function() {
+                const expanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', String(!expanded));
+                primaryNav.classList.toggle('active');
+            });
+
+            // Close nav when clicking outside (mobile)
+            window.addEventListener('click', function(event) {
+                if (!event.target.closest('.navbar') && primaryNav.classList.contains('active')) {
+                    primaryNav.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            const books = [];
+            // Generate data for 100 books
+            for (let i = 1; i <= 100; i++) {
+                books.push({
+                    id: i,
+                    title: `The Secret of Book ${i}`,
+                    // Using a placeholder image service for variety
+                    cover: `https://picsum.photos/400/300?random=${i}`,
+                    description: `This is a short, engaging summary for 'The Secret of Book ${i}'. It gives a glimpse into the adventures and mysteries that await the reader inside.`,
+                    fullDescription: `Dive deep into the world of 'The Secret of Book ${i}'. This is the full, detailed description that explores the plot, main characters, and the central themes of t[...]
+                });
+            }
+
+            // Populate the grid with book cards
+            books.forEach(book => {
+                const card = document.createElement('div');
+                card.className = 'book-card';
+                card.innerHTML = `
+                    <div class="book-cover">
+                        <img src="${book.cover}" alt="Cover for ${book.title}">
+                    </div>
+                    <div class="book-info">
+                        <h3>${book.title}</h3>
+                        <p>${book.description}</p>
+                        <div class="book-actions">
+                            <button class="btn btn-details" data-id="${book.id}">Details</button>
+                            <a href="/download/demo/${book.id}" class="btn btn-download" data-id="${book.id}">Download Demo</a>
+                        </div>
+                    </div>
+                `;
+                bookGrid.appendChild(card);
+            });
+
+            // Event Delegation for all buttons on the grid
+            bookGrid.addEventListener('click', function(e) {
+                const target = e.target;
+
+                // Handle Download Demo click
+                if (target.classList.contains('btn-download')) {
+                    e.preventDefault(); // Prevent the link from navigating
+                    loginModal.style.display = 'block';
+                }
+
+                // Handle Details click
+                if (target.classList.contains('btn-details')) {
+                    const bookId = target.dataset.id;
+                    const book = books.find(b => b.id == bookId);
+                    
+                    if (book) {
+                        document.getElementById('modal-book-cover').src = book.cover;
+                        document.getElementById('modal-book-title').textContent = book.title;
+                        document.getElementById('modal-book-description').textContent = book.fullDescription;
+                        detailsModal.style.display = 'block';
+                    }
+                }
+            });
+
+            // Functions to close modals
+            function closeModal(modal) {
+                modal.style.display = 'none';
+            }
+
+            closeLoginBtn.onclick = () => closeModal(loginModal);
+            closeDetailsBtn.onclick = () => closeModal(detailsModal);
+
+            // Close modal if user clicks outside of the modal content
+            window.onclick = function(event) {
+                if (event.target == loginModal) {
+                    closeModal(loginModal);
+                }
+                if (event.target == detailsModal) {
+                    closeModal(detailsModal);
+                }
+            }
+        });
+    </script>
+
+
+
+<!-- Your custom script -->
     <script type="module" src="script.js"></script> 
 </body>
 </html>
