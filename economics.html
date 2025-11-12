@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="bn">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSC Economics Study Tips</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', 'Noto Sans Bengali', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      flex: 1;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .header h1 {
+      color: #0d47a1;
+      font-size: 2.8rem;
+      margin: 0 0 0.5rem 0;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(13, 71, 161, 0.1);
+    }
+
+    .header p {
+      color: #1565c0;
+      font-size: 1.3rem;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .category-section {
+      margin-bottom: 3rem;
+      animation: fadeInUp 0.8s ease-out;
+      animation-fill-mode: both;
+    }
+
+    .category-section:nth-child(2) { animation-delay: 0.1s; }
+    .category-section:nth-child(3) { animation-delay: 0.2s; }
+    .category-section:nth-child(4) { animation-delay: 0.3s; }
+    .category-section:nth-child(5) { animation-delay: 0.4s; }
+    .category-section:nth-child(6) { animation-delay: 0.5s; }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem 1.5rem;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(13, 71, 161, 0.1);
+    }
+
+    .category-icon {
+      font-size: 2.5rem;
+    }
+
+    .category-title {
+      color: #0d47a1;
+      font-size: 1.8rem;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .category-subtitle {
+      color: #1565c0;
+      font-size: 1rem;
+      margin: 0.25rem 0 0 0;
+      font-weight: 500;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .tip-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 12px rgba(13, 71, 161, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid #1976d2;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .tip-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(13, 71, 161, 0.15);
+    }
+
+    .tip-number {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+    }
+
+    .tip-content {
+      flex: 1;
+    }
+
+    .tip-text {
+      color: #37474f;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .category-section:nth-child(2) .tip-card { border-left-color: #1976d2; }
+    .category-section:nth-child(3) .tip-card { border-left-color: #00897b; }
+    .category-section:nth-child(4) .tip-card { border-left-color: #5e35b1; }
+    .category-section:nth-child(5) .tip-card { border-left-color: #e53935; }
+    .category-section:nth-child(6) .tip-card { border-left-color: #fb8c00; }
+
+    .footer {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(13, 71, 161, 0.1);
+      animation: fadeInUp 0.8s ease-out 0.6s;
+      animation-fill-mode: both;
+      margin-top: 2rem;
+    }
+
+    .footer h2 {
+      color: #0d47a1;
+      font-size: 2rem;
+      margin: 0 0 1rem 0;
+      font-weight: 700;
+    }
+
+    .footer p {
+      color: #37474f;
+      font-size: 1.1rem;
+      margin: 0 0 1.5rem 0;
+      line-height: 1.7;
+    }
+
+    .hashtags {
+      color: #1976d2;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.85rem 1.75rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.4);
+    }
+
+    .cta-button:active {
+      transform: scale(0.98);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .header p {
+        font-size: 1.1rem;
+      }
+
+      .category-title {
+        font-size: 1.4rem;
+      }
+
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer h2 {
+        font-size: 1.6rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .cta-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <header class="header">
+    <h1 id="main-title">HSC Economics ভালো করার ২৫টি টিপস 📊</h1>
+    <p id="subtitle">Learn Smart, Think Economically 💡</p>
+   </header>
+   <main><!-- Category 1: Conceptual Foundation -->
+    <section class="category-section">
+     <div class="category-header"><span class="category-icon">📚</span>
+      <div>
+       <h2 class="category-title">Conceptual Foundation</h2>
+       <p class="category-subtitle">Understand • Visualize • Summarize</p>
+      </div>
+     </div>
+     <div class="tips-grid">
+      <div class="tip-card">
+       <div class="tip-number">
+        1
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat1-tip1">Concept বুঝো, মুখস্থ করো না! Economics মানে logic — বুঝলেই সব সহজ হবে।</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        2
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat1-tip2">Textbook-এর definition গুলো ভালো করে note করো — এগুলো exam-এ directly আসে।</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        3
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat1-tip3">Diagram-এর logic ধরো — শুধু আঁকো না, explain করতে শেখো।</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        4
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat1-tip4">Important formula মুখস্থ নয়, প্রয়োগ বুঝে শেখো — তাহলে ভুলবে না।</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        5
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat1-tip5">Chapter-wise summary বানিয়ে পড়ো — revision সহজ হবে।</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Category 2: Data & Diagram Mastery -->
+    <section class="category-section">
+     <div class="category-header"><span class="category-icon">📈</span>
+      <div>
+       <h2 class="category-title">Data &amp; Diagram Mastery</h2>
+       <p class="category-subtitle">Diagram = Half Marks!</p>
+      </div>
+     </div>
+     <div class="tips-grid">
+      <div class="tip-card">
+       <div class="tip-number">
+        6
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat2-tip1">Demand–Supply curve অনুশীলন করো — এটা economics-এর heart!</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        7
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat2-tip2">Elasticity-এর মানে বোঝো real-life example দিয়ে — তাহলে মনে থাকবে।</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        8
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat2-tip3">Production possibility curve মুখস্থ নয়, ব্যাখ্যা শেখো — concept clear করো।</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        9
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat2-tip4">Diagram label সবসময় clear রাখো — axis, title, units সব দাও।</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        10
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat2-tip5">Calculation question প্রতিদিন practice করো — speed বাড়াও।</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Category 3: Smart Study Plan -->
+    <section class="category-section">
+     <div class="category-header"><span class="category-icon">🧠</span>
+      <div>
+       <h2 class="category-title">Smart Study Plan</h2>
+       <p class="category-subtitle">Plan • Practice • Revise</p>
+      </div>
+     </div>
+     <div class="tips-grid">
+      <div class="tip-card">
+       <div class="tip-number">
+        11
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat3-tip1">প্রতিদিন ১ ঘণ্টা শুধু Economics-এর জন্য রাখো — consistency is key!</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        12
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat3-tip2">Easy topic আগে, tough topic পরে পড়ো — confidence build করো।</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        13
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat3-tip3">প্রতিটি অধ্যায়ের শেষে নিজে short notes বানাও — এটা best revision tool!</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        14
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat3-tip4">Previous year question গুলো solve করো — pattern বুঝবে।</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        15
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat3-tip5">নিজের ভুলগুলো নোট করে revise করো — same mistake repeat করো না।</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Category 4: Writing & Presentation -->
+    <section class="category-section">
+     <div class="category-header"><span class="category-icon">✍️</span>
+      <div>
+       <h2 class="category-title">Writing &amp; Presentation</h2>
+       <p class="category-subtitle">Clear Writing = High Scoring</p>
+      </div>
+     </div>
+     <div class="tips-grid">
+      <div class="tip-card">
+       <div class="tip-number">
+        16
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat4-tip1">উত্তর লেখো clear ও পরিপূর্ণভাবে — incomplete answer marks কাটে।</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        17
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat4-tip2">প্রশ্নের ধরন অনুযায়ী answer দাও — MCQ, CQ দুটোই practice করো।</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        18
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat4-tip3">Long question-এ intro, analysis, conclusion তিন অংশ রাখো — structure matters!</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        19
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat4-tip4">Graph থাকলে always draw with scale &amp; title — presentation counts!</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        20
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat4-tip5">Handwriting neat রাখো, margin follow করো — first impression important!</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Category 5: Revision & Practice -->
+    <section class="category-section">
+     <div class="category-header"><span class="category-icon">🔁</span>
+      <div>
+       <h2 class="category-title">Revision &amp; Practice</h2>
+       <p class="category-subtitle">Practice + Confidence = Success</p>
+      </div>
+     </div>
+     <div class="tips-grid">
+      <div class="tip-card">
+       <div class="tip-number">
+        21
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat5-tip1">প্রতি সপ্তাহে ১টি mock test দাও — exam pressure handle করতে শেখো।</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        22
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat5-tip2">ভুল উত্তরগুলোর কারণ খুঁজে বের করো — learn from mistakes!</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        23
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat5-tip3">বন্ধুর সঙ্গে quiz practice করো — group study helps!</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        24
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat5-tip4">Exam-এর আগে পুরো syllabus ৩ বার revise করো — repetition is key!</p>
+       </div>
+      </div>
+      <div class="tip-card">
+       <div class="tip-number">
+        25
+       </div>
+       <div class="tip-content">
+        <p class="tip-text" id="cat5-tip5">আত্মবিশ্বাস রাখো — You can do it! 💪 Believe in yourself!</p>
+       </div>
+      </div>
+     </div>
+    </section>
+   </main>
+   <footer class="footer">
+    <h2>Think Smart • Study Deep • Score High 🎯</h2>
+    <p id="closing-message">Economics tough না — এটা logic আর understanding-এর game! যত বেশি বুঝবে, তত সহজ মনে হবে। So, keep learning, keep analyzing, and remember — Smart study is better than hard study! Best of luck for your HSC Economics! 🌟</p>
+    <p class="hashtags" id="hashtags">#HSC2025 #EconomicsTips #StudySmart</p>
+    <div class="cta-buttons"><button class="cta-button" onclick="shareContent()">❤️ Like &amp; Share</button> <button class="cta-button" onclick="startLearning()">🚀 Start Learning</button>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      main_title: "HSC Economics ভালো করার ২৫টি টিপস 📊",
+      subtitle: "Learn Smart, Think Economically 💡",
+      cat1_tip1: "Concept বুঝো, মুখস্থ করো না! Economics মানে logic — বুঝলেই সব সহজ হবে।",
+      cat1_tip2: "Textbook-এর definition গুলো ভালো করে note করো — এগুলো exam-এ directly আসে।",
+      cat1_tip3: "Diagram-এর logic ধরো — শুধু আঁকো না, explain করতে শেখো।",
+      cat1_tip4: "Important formula মুখস্থ নয়, প্রয়োগ বুঝে শেখো — তাহলে ভুলবে না।",
+      cat1_tip5: "Chapter-wise summary বানিয়ে পড়ো — revision সহজ হবে।",
+      cat2_tip1: "Demand–Supply curve অনুশীলন করো — এটা economics-এর heart!",
+      cat2_tip2: "Elasticity-এর মানে বোঝো real-life example দিয়ে — তাহলে মনে থাকবে।",
+      cat2_tip3: "Production possibility curve মুখস্থ নয়, ব্যাখ্যা শেখো — concept clear করো।",
+      cat2_tip4: "Diagram label সবসময় clear রাখো — axis, title, units সব দাও।",
+      cat2_tip5: "Calculation question প্রতিদিন practice করো — speed বাড়াও।",
+      cat3_tip1: "প্রতিদিন ১ ঘণ্টা শুধু Economics-এর জন্য রাখো — consistency is key!",
+      cat3_tip2: "Easy topic আগে, tough topic পরে পড়ো — confidence build করো।",
+      cat3_tip3: "প্রতিটি অধ্যায়ের শেষে নিজে short notes বানাও — এটা best revision tool!",
+      cat3_tip4: "Previous year question গুলো solve করো — pattern বুঝবে।",
+      cat3_tip5: "নিজের ভুলগুলো নোট করে revise করো — same mistake repeat করো না।",
+      cat4_tip1: "উত্তর লেখো clear ও পরিপূর্ণভাবে — incomplete answer marks কাটে।",
+      cat4_tip2: "প্রশ্নের ধরন অনুযায়ী answer দাও — MCQ, CQ দুটোই practice করো।",
+      cat4_tip3: "Long question-এ intro, analysis, conclusion তিন অংশ রাখো — structure matters!",
+      cat4_tip4: "Graph থাকলে always draw with scale & title — presentation counts!",
+      cat4_tip5: "Handwriting neat রাখো, margin follow করো — first impression important!",
+      cat5_tip1: "প্রতি সপ্তাহে ১টি mock test দাও — exam pressure handle করতে শেখো।",
+      cat5_tip2: "ভুল উত্তরগুলোর কারণ খুঁজে বের করো — learn from mistakes!",
+      cat5_tip3: "বন্ধুর সঙ্গে quiz practice করো — group study helps!",
+      cat5_tip4: "Exam-এর আগে পুরো syllabus ৩ বার revise করো — repetition is key!",
+      cat5_tip5: "আত্মবিশ্বাস রাখো — You can do it! 💪 Believe in yourself!",
+      closing_message: "Economics tough না — এটা logic আর understanding-এর game! যত বেশি বুঝবে, তত সহজ মনে হবে। So, keep learning, keep analyzing, and remember — Smart study is better than hard study! Best of luck for your HSC Economics! 🌟",
+      hashtags: "#HSC2025 #EconomicsTips #StudySmart",
+      background_color: "#e3f2fd",
+      card_background: "#ffffff",
+      text_color: "#0d47a1",
+      body_text_color: "#37474f",
+      accent_color: "#1976d2",
+      font_family: "Inter",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      document.getElementById('main-title').textContent = config.main_title || defaultConfig.main_title;
+      document.getElementById('subtitle').textContent = config.subtitle || defaultConfig.subtitle;
+      document.getElementById('cat1-tip1').textContent = config.cat1_tip1 || defaultConfig.cat1_tip1;
+      document.getElementById('cat1-tip2').textContent = config.cat1_tip2 || defaultConfig.cat1_tip2;
+      document.getElementById('cat1-tip3').textContent = config.cat1_tip3 || defaultConfig.cat1_tip3;
+      document.getElementById('cat1-tip4').textContent = config.cat1_tip4 || defaultConfig.cat1_tip4;
+      document.getElementById('cat1-tip5').textContent = config.cat1_tip5 || defaultConfig.cat1_tip5;
+      document.getElementById('cat2-tip1').textContent = config.cat2_tip1 || defaultConfig.cat2_tip1;
+      document.getElementById('cat2-tip2').textContent = config.cat2_tip2 || defaultConfig.cat2_tip2;
+      document.getElementById('cat2-tip3').textContent = config.cat2_tip3 || defaultConfig.cat2_tip3;
+      document.getElementById('cat2-tip4').textContent = config.cat2_tip4 || defaultConfig.cat2_tip4;
+      document.getElementById('cat2-tip5').textContent = config.cat2_tip5 || defaultConfig.cat2_tip5;
+      document.getElementById('cat3-tip1').textContent = config.cat3_tip1 || defaultConfig.cat3_tip1;
+      document.getElementById('cat3-tip2').textContent = config.cat3_tip2 || defaultConfig.cat3_tip2;
+      document.getElementById('cat3-tip3').textContent = config.cat3_tip3 || defaultConfig.cat3_tip3;
+      document.getElementById('cat3-tip4').textContent = config.cat3_tip4 || defaultConfig.cat3_tip4;
+      document.getElementById('cat3-tip5').textContent = config.cat3_tip5 || defaultConfig.cat3_tip5;
+      document.getElementById('cat4-tip1').textContent = config.cat4_tip1 || defaultConfig.cat4_tip1;
+      document.getElementById('cat4-tip2').textContent = config.cat4_tip2 || defaultConfig.cat4_tip2;
+      document.getElementById('cat4-tip3').textContent = config.cat4_tip3 || defaultConfig.cat4_tip3;
+      document.getElementById('cat4-tip4').textContent = config.cat4_tip4 || defaultConfig.cat4_tip4;
+      document.getElementById('cat4-tip5').textContent = config.cat4_tip5 || defaultConfig.cat4_tip5;
+      document.getElementById('cat5-tip1').textContent = config.cat5_tip1 || defaultConfig.cat5_tip1;
+      document.getElementById('cat5-tip2').textContent = config.cat5_tip2 || defaultConfig.cat5_tip2;
+      document.getElementById('cat5-tip3').textContent = config.cat5_tip3 || defaultConfig.cat5_tip3;
+      document.getElementById('cat5-tip4').textContent = config.cat5_tip4 || defaultConfig.cat5_tip4;
+      document.getElementById('cat5-tip5').textContent = config.cat5_tip5 || defaultConfig.cat5_tip5;
+      document.getElementById('closing-message').textContent = config.closing_message || defaultConfig.closing_message;
+      document.getElementById('hashtags').textContent = config.hashtags || defaultConfig.hashtags;
+
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const cardBackground = config.card_background || defaultConfig.card_background;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const bodyTextColor = config.body_text_color || defaultConfig.body_text_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+
+      document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${adjustColor(backgroundColor, -10)} 100%)`;
+
+      document.querySelectorAll('.tip-card, .category-header, .footer').forEach(el => {
+        el.style.background = cardBackground;
+      });
+
+      document.querySelectorAll('.header h1, .category-title, .footer h2').forEach(el => {
+        el.style.color = textColor;
+      });
+
+      document.querySelectorAll('.header p, .category-subtitle').forEach(el => {
+        el.style.color = textColor;
+      });
+
+      document.querySelectorAll('.tip-text, .footer p').forEach(el => {
+        el.style.color = bodyTextColor;
+      });
+
+      document.querySelectorAll('.tip-number').forEach(el => {
+        el.style.background = `linear-gradient(135deg, ${accentColor} 0%, ${textColor} 100%)`;
+      });
+
+      document.querySelector('.hashtags').style.color = accentColor;
+
+      document.querySelectorAll('.cta-button').forEach(btn => {
+        btn.style.background = `linear-gradient(135deg, ${accentColor} 0%, ${textColor} 100%)`;
+      });
+
+      const baseFontStack = 'Noto Sans Bengali, Segoe UI, sans-serif';
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      document.querySelector('.header h1').style.fontSize = `${baseSize * 2.8}px`;
+      document.querySelector('.header p').style.fontSize = `${baseSize * 1.3}px`;
+      document.querySelectorAll('.category-title').forEach(el => {
+        el.style.fontSize = `${baseSize * 1.8}px`;
+      });
+      document.querySelectorAll('.tip-text').forEach(el => {
+        el.style.fontSize = `${baseSize * 0.95}px`;
+      });
+      document.querySelector('.footer h2').style.fontSize = `${baseSize * 2}px`;
+      document.querySelector('.footer p').style.fontSize = `${baseSize * 1.1}px`;
+    }
+
+    function adjustColor(color, percent) {
+      const num = parseInt(color.replace("#",""), 16);
+      const amt = Math.round(2.55 * percent);
+      const R = Math.max(0, Math.min(255, (num >> 16) + amt));
+      const G = Math.max(0, Math.min(255, (num >> 8 & 0x00FF) + amt));
+      const B = Math.max(0, Math.min(255, (num & 0x0000FF) + amt));
+      return "#" + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
+    }
+
+    function shareContent() {
+      const message = document.createElement('div');
+      message.textContent = '❤️ Thanks for sharing! Keep learning Economics!';
+      message.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+        color: white;
+        padding: 1.5rem 2rem;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        box-shadow: 0 8px 24px rgba(25, 118, 210, 0.4);
+        z-index: 1000;
+        animation: fadeInUp 0.3s ease-out;
+      `;
+      document.body.appendChild(message);
+      setTimeout(() => {
+        message.style.animation = 'fadeInDown 0.3s ease-out reverse';
+        setTimeout(() => message.remove(), 300);
+      }, 2000);
+    }
+
+    function startLearning() {
+      const message = document.createElement('div');
+      message.textContent = '🚀 Great! Start with Category 1 today!';
+      message.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+        color: white;
+        padding: 1.5rem 2rem;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        box-shadow: 0 8px 24px rgba(25, 118, 210, 0.4);
+        z-index: 1000;
+        animation: fadeInUp 0.3s ease-out;
+      `;
+      document.body.appendChild(message);
+      setTimeout(() => {
+        message.style.animation = 'fadeInDown 0.3s ease-out reverse';
+        setTimeout(() => message.remove(), 300);
+      }, 2000);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.card_background || defaultConfig.card_background,
+              set: (value) => {
+                config.card_background = value;
+                window.elementSdk.setConfig({ card_background: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.body_text_color || defaultConfig.body_text_color,
+              set: (value) => {
+                config.body_text_color = value;
+                window.elementSdk.setConfig({ body_text_color: value });
+              }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["main_title", config.main_title || defaultConfig.main_title],
+          ["subtitle", config.subtitle || defaultConfig.subtitle],
+          ["cat1_tip1", config.cat1_tip1 || defaultConfig.cat1_tip1],
+          ["cat1_tip2", config.cat1_tip2 || defaultConfig.cat1_tip2],
+          ["cat1_tip3", config.cat1_tip3 || defaultConfig.cat1_tip3],
+          ["cat1_tip4", config.cat1_tip4 || defaultConfig.cat1_tip4],
+          ["cat1_tip5", config.cat1_tip5 || defaultConfig.cat1_tip5],
+          ["cat2_tip1", config.cat2_tip1 || defaultConfig.cat2_tip1],
+          ["cat2_tip2", config.cat2_tip2 || defaultConfig.cat2_tip2],
+          ["cat2_tip3", config.cat2_tip3 || defaultConfig.cat2_tip3],
+          ["cat2_tip4", config.cat2_tip4 || defaultConfig.cat2_tip4],
+          ["cat2_tip5", config.cat2_tip5 || defaultConfig.cat2_tip5],
+          ["cat3_tip1", config.cat3_tip1 || defaultConfig.cat3_tip1],
+          ["cat3_tip2", config.cat3_tip2 || defaultConfig.cat3_tip2],
+          ["cat3_tip3", config.cat3_tip3 || defaultConfig.cat3_tip3],
+          ["cat3_tip4", config.cat3_tip4 || defaultConfig.cat3_tip4],
+          ["cat3_tip5", config.cat3_tip5 || defaultConfig.cat3_tip5],
+          ["cat4_tip1", config.cat4_tip1 || defaultConfig.cat4_tip1],
+          ["cat4_tip2", config.cat4_tip2 || defaultConfig.cat4_tip2],
+          ["cat4_tip3", config.cat4_tip3 || defaultConfig.cat4_tip3],
+          ["cat4_tip4", config.cat4_tip4 || defaultConfig.cat4_tip4],
+          ["cat4_tip5", config.cat4_tip5 || defaultConfig.cat4_tip5],
+          ["cat5_tip1", config.cat5_tip1 || defaultConfig.cat5_tip1],
+          ["cat5_tip2", config.cat5_tip2 || defaultConfig.cat5_tip2],
+          ["cat5_tip3", config.cat5_tip3 || defaultConfig.cat5_tip3],
+          ["cat5_tip4", config.cat5_tip4 || defaultConfig.cat5_tip4],
+          ["cat5_tip5", config.cat5_tip5 || defaultConfig.cat5_tip5],
+          ["closing_message", config.closing_message || defaultConfig.closing_message],
+          ["hashtags", config.hashtags || defaultConfig.hashtags]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99d8532ac52e4e9d',t:'MTc2Mjk3NDU3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
