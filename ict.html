@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="bn">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSC ICT Study Tips</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans Bengali', 'Inter', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Tech grid background effect */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .header h1 {
+      color: #00d4ff;
+      font-size: 2.5rem;
+      margin: 0 0 0.5rem 0;
+      text-shadow: 0 0 20px rgba(0, 212, 255, 0.5), 2px 2px 4px rgba(0,0,0,0.3);
+      font-weight: 700;
+    }
+
+    .header p {
+      color: #a0e7ff;
+      font-size: 1.2rem;
+      margin: 0;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .tip-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.8s ease-out;
+      animation-fill-mode: both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tip-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .tip-card:hover::before {
+      opacity: 1;
+    }
+
+    .tip-card:nth-child(1) { animation-delay: 0.1s; }
+    .tip-card:nth-child(2) { animation-delay: 0.2s; }
+    .tip-card:nth-child(3) { animation-delay: 0.3s; }
+    .tip-card:nth-child(4) { animation-delay: 0.4s; }
+    .tip-card:nth-child(5) { animation-delay: 0.5s; }
+
+    .tip-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 212, 255, 0.3);
+      border-color: rgba(0, 212, 255, 0.5);
+    }
+
+    .tip-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+      filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+    }
+
+    .tip-number {
+      display: inline-block;
+      background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+      color: #0f2027;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 36px;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 212, 255, 0.4);
+      font-size: 1.1rem;
+    }
+
+    .tip-card h3 {
+      color: #00d4ff;
+      font-size: 1.3rem;
+      margin: 0 0 0.75rem 0;
+      font-weight: 600;
+    }
+
+    .tip-card p {
+      color: #d0e7f0;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .footer {
+      background: rgba(0, 212, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 0.8s ease-out 0.6s;
+      animation-fill-mode: both;
+    }
+
+    .footer h2 {
+      color: #00d4ff;
+      font-size: 1.8rem;
+      margin: 0 0 1rem 0;
+      text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    }
+
+    .footer p {
+      color: #d0e7f0;
+      font-size: 1.1rem;
+      margin: 0 0 1.5rem 0;
+      line-height: 1.6;
+    }
+
+    .hashtags {
+      color: #00d4ff;
+      font-weight: 600;
+      font-size: 1rem;
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+      color: #0f2027;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.5s, height 0.5s;
+    }
+
+    .cta-button:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+    }
+
+    .cta-button:active {
+      transform: scale(0.98);
+    }
+
+    .cta-button span {
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .header p {
+        font-size: 1rem;
+      }
+
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer h2 {
+        font-size: 1.5rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .cta-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <header class="header">
+    <h1 id="main-title">HSC ICT ভালো করার টিপস 💻</h1>
+    <p id="subtitle">Learn Smart, Score Higher!</p>
+   </header>
+   <div class="tips-grid">
+    <div class="tip-card"><span class="tip-icon">🧠</span> <span class="tip-number">1</span>
+     <h3 id="tip1-title">Concept বোঝো, মুখস্থ কমাও!</h3>
+     <p id="tip1-description">Understand, don't just memorize! ICT মানে শুধু মুখস্থ না — বোঝা জরুরি। যেমন Database বা Algorithm — concept ধরো, তাহলেই tricky MCQ-ও হবে easy! 😎</p>
+    </div>
+    <div class="tip-card"><span class="tip-icon">💻</span> <span class="tip-number">2</span>
+     <h3 id="tip2-title">Daily MCQ + CQ Practice!</h3>
+     <p id="tip2-description">Practice makes perfect! প্রতিদিন অন্তত ২০টা MCQ solve করো। আর CQ লিখে practice করো — especially flowchart, binary number, database SQL। Remember — ICT loves practice! 🔁</p>
+    </div>
+    <div class="tip-card"><span class="tip-icon">⌨️</span> <span class="tip-number">3</span>
+     <h3 id="tip3-title">Shortcut জানো, সময় বাঁচাও!</h3>
+     <p id="tip3-description">Master the shortcuts &amp; formulas! Excel, HTML, binary conversion — এই টপিকগুলোতে ছোট shortcut গুলো মনে রাখো। Exam-এ সময় বাঁচাবে আর মার্ক বাড়াবে!</p>
+    </div>
+    <div class="tip-card"><span class="tip-icon">🖥️</span> <span class="tip-number">4</span>
+     <h3 id="tip4-title">Practice on Computer!</h3>
+     <p id="tip4-description">Do hands-on practice! শুধু বই না, কম্পিউটারেও কাজ করো। Word, Excel, PowerPoint, HTML — নিজে করে দেখো! Then you'll feel like a real IT pro! 💪</p>
+    </div>
+    <div class="tip-card"><span class="tip-icon">📘</span> <span class="tip-number">5</span>
+     <h3 id="tip5-title">Previous Year Solve = Success!</h3>
+     <p id="tip5-description">Previous year questions are gold! বোর্ড প্রশ্ন গুলো বারবার করো। এতে বুঝবে কোনটা বেশি আসে, আর কোথায় বেশি ভুল হয়।</p>
+    </div>
+   </div>
+   <footer class="footer">
+    <h2>Be Smart • Stay Digital • Crack HSC ICT! 🚀</h2>
+    <p id="closing-message">এখন থেকে ICT মানে ভয় নয় — enjoyment! 😄 Learn smart, practice regular, আর believe me — তুমি পারবেই shine করতে! 🌟 Best of luck for your HSC ICT exam!</p>
+    <p class="hashtags" id="hashtags">#HSC2025 #ICTTips #StudySmart</p>
+    <div class="cta-buttons"><button class="cta-button" onclick="shareContent()"> <span>❤️ Like &amp; Share</span> </button> <button class="cta-button" onclick="startLearning()"> <span>🚀 Start Learning</span> </button>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      main_title: "HSC ICT ভালো করার টিপস 💻",
+      subtitle: "Learn Smart, Score Higher!",
+      tip1_title: "Concept বোঝো, মুখস্থ কমাও!",
+      tip1_description: "Understand, don't just memorize! ICT মানে শুধু মুখস্থ না — বোঝা জরুরি। যেমন Database বা Algorithm — concept ধরো, তাহলেই tricky MCQ-ও হবে easy! 😎",
+      tip2_title: "Daily MCQ + CQ Practice!",
+      tip2_description: "Practice makes perfect! প্রতিদিন অন্তত ২০টা MCQ solve করো। আর CQ লিখে practice করো — especially flowchart, binary number, database SQL। Remember — ICT loves practice! 🔁",
+      tip3_title: "Shortcut জানো, সময় বাঁচাও!",
+      tip3_description: "Master the shortcuts & formulas! Excel, HTML, binary conversion — এই টপিকগুলোতে ছোট shortcut গুলো মনে রাখো। Exam-এ সময় বাঁচাবে আর মার্ক বাড়াবে!",
+      tip4_title: "Practice on Computer!",
+      tip4_description: "Do hands-on practice! শুধু বই না, কম্পিউটারেও কাজ করো। Word, Excel, PowerPoint, HTML — নিজে করে দেখো! Then you'll feel like a real IT pro! 💪",
+      tip5_title: "Previous Year Solve = Success!",
+      tip5_description: "Previous year questions are gold! বোর্ড প্রশ্ন গুলো বারবার করো। এতে বুঝবে কোনটা বেশি আসে, আর কোথায় বেশি ভুল হয়।",
+      closing_message: "এখন থেকে ICT মানে ভয় নয় — enjoyment! 😄 Learn smart, practice regular, আর believe me — তুমি পারবেই shine করতে! 🌟 Best of luck for your HSC ICT exam!",
+      hashtags: "#HSC2025 #ICTTips #StudySmart",
+      background_color: "#0f2027",
+      card_background: "rgba(255, 255, 255, 0.05)",
+      text_color: "#00d4ff",
+      secondary_text_color: "#d0e7f0",
+      accent_color: "#00d4ff",
+      font_family: "Noto Sans Bengali",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const mainTitle = config.main_title || defaultConfig.main_title;
+      const subtitle = config.subtitle || defaultConfig.subtitle;
+      const tip1Title = config.tip1_title || defaultConfig.tip1_title;
+      const tip1Description = config.tip1_description || defaultConfig.tip1_description;
+      const tip2Title = config.tip2_title || defaultConfig.tip2_title;
+      const tip2Description = config.tip2_description || defaultConfig.tip2_description;
+      const tip3Title = config.tip3_title || defaultConfig.tip3_title;
+      const tip3Description = config.tip3_description || defaultConfig.tip3_description;
+      const tip4Title = config.tip4_title || defaultConfig.tip4_title;
+      const tip4Description = config.tip4_description || defaultConfig.tip4_description;
+      const tip5Title = config.tip5_title || defaultConfig.tip5_title;
+      const tip5Description = config.tip5_description || defaultConfig.tip5_description;
+      const closingMessage = config.closing_message || defaultConfig.closing_message;
+      const hashtags = config.hashtags || defaultConfig.hashtags;
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const secondaryTextColor = config.secondary_text_color || defaultConfig.secondary_text_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+
+      document.getElementById('main-title').textContent = mainTitle;
+      document.getElementById('subtitle').textContent = subtitle;
+      document.getElementById('tip1-title').textContent = tip1Title;
+      document.getElementById('tip1-description').textContent = tip1Description;
+      document.getElementById('tip2-title').textContent = tip2Title;
+      document.getElementById('tip2-description').textContent = tip2Description;
+      document.getElementById('tip3-title').textContent = tip3Title;
+      document.getElementById('tip3-description').textContent = tip3Description;
+      document.getElementById('tip4-title').textContent = tip4Title;
+      document.getElementById('tip4-description').textContent = tip4Description;
+      document.getElementById('tip5-title').textContent = tip5Title;
+      document.getElementById('tip5-description').textContent = tip5Description;
+      document.getElementById('closing-message').textContent = closingMessage;
+      document.getElementById('hashtags').textContent = hashtags;
+
+      document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${adjustColor(backgroundColor, 15)} 50%, ${adjustColor(backgroundColor, 30)} 100%)`;
+
+      document.querySelectorAll('.header h1, .tip-card h3, .footer h2, .hashtags').forEach(el => {
+        el.style.color = textColor;
+      });
+
+      document.querySelectorAll('.header p, .tip-card p, .footer p').forEach(el => {
+        el.style.color = secondaryTextColor;
+      });
+
+      document.querySelectorAll('.tip-number').forEach(el => {
+        el.style.background = `linear-gradient(135deg, ${accentColor} 0%, ${adjustColor(accentColor, -20)} 100%)`;
+      });
+
+      document.querySelectorAll('.cta-button').forEach(btn => {
+        btn.style.background = `linear-gradient(135deg, ${accentColor} 0%, ${adjustColor(accentColor, -20)} 100%)`;
+      });
+
+      const baseFontStack = 'Inter, Segoe UI, sans-serif';
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      document.querySelector('.header h1').style.fontSize = `${baseSize * 2.5}px`;
+      document.querySelector('.header p').style.fontSize = `${baseSize * 1.2}px`;
+      document.querySelectorAll('.tip-card h3').forEach(el => {
+        el.style.fontSize = `${baseSize * 1.3}px`;
+      });
+      document.querySelectorAll('.tip-card p').forEach(el => {
+        el.style.fontSize = `${baseSize}px`;
+      });
+      document.querySelector('.footer h2').style.fontSize = `${baseSize * 1.8}px`;
+      document.querySelector('.footer p').style.fontSize = `${baseSize * 1.1}px`;
+      document.querySelectorAll('.cta-button').forEach(btn => {
+        btn.style.fontSize = `${baseSize}px`;
+      });
+    }
+
+    function adjustColor(color, percent) {
+      const num = parseInt(color.replace("#",""), 16);
+      const amt = Math.round(2.55 * percent);
+      const R = Math.max(0, Math.min(255, (num >> 16) + amt));
+      const G = Math.max(0, Math.min(255, (num >> 8 & 0x00FF) + amt));
+      const B = Math.max(0, Math.min(255, (num & 0x0000FF) + amt));
+      return "#" + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
+    }
+
+    function shareContent() {
+      const message = document.createElement('div');
+      message.textContent = '❤️ Thanks for sharing! Keep learning ICT!';
+      message.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+        color: #0f2027;
+        padding: 1.5rem 2rem;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        box-shadow: 0 8px 32px rgba(0, 212, 255, 0.5);
+        z-index: 1000;
+        animation: fadeInUp 0.3s ease-out;
+      `;
+      document.body.appendChild(message);
+      setTimeout(() => {
+        message.style.animation = 'fadeInDown 0.3s ease-out reverse';
+        setTimeout(() => message.remove(), 300);
+      }, 2000);
+    }
+
+    function startLearning() {
+      const message = document.createElement('div');
+      message.textContent = '🚀 Great! Start with Tip 1 today!';
+      message.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+        color: #0f2027;
+        padding: 1.5rem 2rem;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        box-shadow: 0 8px 32px rgba(0, 212, 255, 0.5);
+        z-index: 1000;
+        animation: fadeInUp 0.3s ease-out;
+      `;
+      document.body.appendChild(message);
+      setTimeout(() => {
+        message.style.animation = 'fadeInDown 0.3s ease-out reverse';
+        setTimeout(() => message.remove(), 300);
+      }, 2000);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_text_color || defaultConfig.secondary_text_color,
+              set: (value) => {
+                config.secondary_text_color = value;
+                window.elementSdk.setConfig({ secondary_text_color: value });
+              }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["main_title", config.main_title || defaultConfig.main_title],
+          ["subtitle", config.subtitle || defaultConfig.subtitle],
+          ["tip1_title", config.tip1_title || defaultConfig.tip1_title],
+          ["tip1_description", config.tip1_description || defaultConfig.tip1_description],
+          ["tip2_title", config.tip2_title || defaultConfig.tip2_title],
+          ["tip2_description", config.tip2_description || defaultConfig.tip2_description],
+          ["tip3_title", config.tip3_title || defaultConfig.tip3_title],
+          ["tip3_description", config.tip3_description || defaultConfig.tip3_description],
+          ["tip4_title", config.tip4_title || defaultConfig.tip4_title],
+          ["tip4_description", config.tip4_description || defaultConfig.tip4_description],
+          ["tip5_title", config.tip5_title || defaultConfig.tip5_title],
+          ["tip5_description", config.tip5_description || defaultConfig.tip5_description],
+          ["closing_message", config.closing_message || defaultConfig.closing_message],
+          ["hashtags", config.hashtags || defaultConfig.hashtags]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99d82e7ef0f54e9d',t:'MTc2Mjk3MzA3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
