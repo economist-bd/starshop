@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="bn">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSC Bangla Study Tips</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Serif Bengali', 'Noto Sans Bengali', 'Georgia', serif;
+      background: linear-gradient(135deg, #fff5e6 0%, #ffe4cc 100%);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      flex: 1;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .header h1 {
+      color: #d84315;
+      font-size: 2.5rem;
+      margin: 0 0 0.5rem 0;
+      text-shadow: 2px 2px 4px rgba(216, 67, 21, 0.1);
+      font-weight: 700;
+    }
+
+    .header p {
+      color: #e64a19;
+      font-size: 1.2rem;
+      margin: 0;
+      font-style: italic;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .tip-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(216, 67, 21, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.8s ease-out;
+      animation-fill-mode: both;
+      border: 2px solid rgba(216, 67, 21, 0.1);
+    }
+
+    .tip-card:nth-child(1) { animation-delay: 0.1s; }
+    .tip-card:nth-child(2) { animation-delay: 0.2s; }
+    .tip-card:nth-child(3) { animation-delay: 0.3s; }
+    .tip-card:nth-child(4) { animation-delay: 0.4s; }
+    .tip-card:nth-child(5) { animation-delay: 0.5s; }
+
+    .tip-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 24px rgba(216, 67, 21, 0.2);
+      border-color: rgba(216, 67, 21, 0.3);
+    }
+
+    .tip-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .tip-number {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff6f3c 0%, #d84315 100%);
+      color: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 36px;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 4px 12px rgba(216, 67, 21, 0.3);
+      font-size: 1.1rem;
+    }
+
+    .tip-card h3 {
+      color: #d84315;
+      font-size: 1.3rem;
+      margin: 0 0 0.75rem 0;
+      font-weight: 600;
+    }
+
+    .tip-card p {
+      color: #5d4037;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .footer {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(216, 67, 21, 0.1);
+      animation: fadeInUp 0.8s ease-out 0.6s;
+      animation-fill-mode: both;
+      border: 2px solid rgba(216, 67, 21, 0.1);
+    }
+
+    .footer h2 {
+      color: #d84315;
+      font-size: 1.8rem;
+      margin: 0 0 1rem 0;
+    }
+
+    .footer p {
+      color: #5d4037;
+      font-size: 1.1rem;
+      margin: 0 0 1.5rem 0;
+      line-height: 1.7;
+    }
+
+    .hashtags {
+      color: #ff6f3c;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, #ff6f3c 0%, #d84315 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 12px rgba(216, 67, 21, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(216, 67, 21, 0.4);
+    }
+
+    .cta-button:active {
+      transform: scale(0.98);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .header p {
+        font-size: 1rem;
+      }
+
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer h2 {
+        font-size: 1.5rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .cta-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <header class="header">
+    <h1 id="main-title">HSC বাংলা ভালো করার টিপস 📚</h1>
+    <p id="subtitle">Learn Smart, Write Better!</p>
+   </header>
+   <div class="tips-grid">
+    <div class="tip-card"><span class="tip-icon">📖</span> <span class="tip-number">1</span>
+     <h3 id="tip1-title">Feel the Literature!</h3>
+     <p id="tip1-description">Read with emotion, not just words! বাংলা সাহিত্য মানে শুধু পড়া না, অনুভব করা। কবিতা বা গল্প পড়ার সময় চরিত্র আর ভাব বুঝে নাও, তাহলেই প্রশ্নে বিশ্লেষণ দিতে পারবে perfect way-তে!</p>
+    </div>
+    <div class="tip-card"><span class="tip-icon">💬</span> <span class="tip-number">2</span>
+     <h3 id="tip2-title">Use Quotes &amp; Explain Clearly!</h3>
+     <p id="tip2-description">Use quotation smartly! রচনায় বা ব্যাখ্যায় ১-২ লাইন কবির বা লেখকের quote দিলে, answer হবে unique! But remember — বুঝে লিখো, মুখস্থ নয়!</p>
+    </div>
+    <div class="tip-card"><span class="tip-icon">🧾</span> <span class="tip-number">3</span>
+     <h3 id="tip3-title">Practice Grammar Daily!</h3>
+     <p id="tip3-description">Grammar and structure matters! শুদ্ধ বানান, সঠিক বাক্যগঠন — এই দুইটাই Bangla 2nd paper-এর lifeline! Daily ১০ মিনিট করে বাংলা ব্যাকরণ practice করো 🧠</p>
+    </div>
+    <div class="tip-card"><span class="tip-icon">✍️</span> <span class="tip-number">4</span>
+     <h3 id="tip4-title">Clean Writing = Extra Marks!</h3>
+     <p id="tip4-description">Write neat, think deep! উত্তরটা পরিষ্কার, সাজানো আর সুন্দর handwriting-এ লেখো। Paragraph ভেঙে দাও, important word underline করো। Presentation-এই examiner impressed হবে!</p>
+    </div>
+    <div class="tip-card"><span class="tip-icon">⏱️</span> <span class="tip-number">5</span>
+     <h3 id="tip5-title">Practice with Timer!</h3>
+     <p id="tip5-description">Practice with timer! আগের বছরের প্রশ্ন নিয়ে full exam দাও। Timing মেনে লেখার অভ্যাস করলে, Main exam-এ speed &amp; confidence দুটোই থাকবে high!</p>
+    </div>
+   </div>
+   <footer class="footer">
+    <h2>Master Bangla • Master Confidence ✨</h2>
+    <p id="closing-message">So learners, Bangla tough না — শুধু একটু technique দরকার! Read smartly, write clearly, আর believe me — তুমি পারবেই HSC Bangla-তে shine করতে! 🌟</p>
+    <p class="hashtags" id="hashtags">#HSC2025 #BanglaTips #StudySmart</p>
+    <div class="cta-buttons"><button class="cta-button" onclick="shareContent()">❤️ Like &amp; Share</button> <button class="cta-button" onclick="startLearning()">🚀 Start Learning</button>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      main_title: "HSC বাংলা ভালো করার টিপস 📚",
+      subtitle: "Learn Smart, Write Better!",
+      tip1_title: "Feel the Literature!",
+      tip1_description: "Read with emotion, not just words! বাংলা সাহিত্য মানে শুধু পড়া না, অনুভব করা। কবিতা বা গল্প পড়ার সময় চরিত্র আর ভাব বুঝে নাও, তাহলেই প্রশ্নে বিশ্লেষণ দিতে পারবে perfect way-তে!",
+      tip2_title: "Use Quotes & Explain Clearly!",
+      tip2_description: "Use quotation smartly! রচনায় বা ব্যাখ্যায় ১-২ লাইন কবির বা লেখকের quote দিলে, answer হবে unique! But remember — বুঝে লিখো, মুখস্থ নয়!",
+      tip3_title: "Practice Grammar Daily!",
+      tip3_description: "Grammar and structure matters! শুদ্ধ বানান, সঠিক বাক্যগঠন — এই দুইটাই Bangla 2nd paper-এর lifeline! Daily ১০ মিনিট করে বাংলা ব্যাকরণ practice করো 🧠",
+      tip4_title: "Clean Writing = Extra Marks!",
+      tip4_description: "Write neat, think deep! উত্তরটা পরিষ্কার, সাজানো আর সুন্দর handwriting-এ লেখো। Paragraph ভেঙে দাও, important word underline করো। Presentation-এই examiner impressed হবে!",
+      tip5_title: "Practice with Timer!",
+      tip5_description: "Practice with timer! আগের বছরের প্রশ্ন নিয়ে full exam দাও। Timing মেনে লেখার অভ্যাস করলে, Main exam-এ speed & confidence দুটোই থাকবে high!",
+      closing_message: "So learners, Bangla tough না — শুধু একটু technique দরকার! Read smartly, write clearly, আর believe me — তুমি পারবেই HSC Bangla-তে shine করতে! 🌟",
+      hashtags: "#HSC2025 #BanglaTips #StudySmart",
+      background_color: "#fff5e6",
+      card_background: "#ffffff",
+      text_color: "#d84315",
+      body_text_color: "#5d4037",
+      accent_color: "#ff6f3c",
+      font_family: "Noto Serif Bengali",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const mainTitle = config.main_title || defaultConfig.main_title;
+      const subtitle = config.subtitle || defaultConfig.subtitle;
+      const tip1Title = config.tip1_title || defaultConfig.tip1_title;
+      const tip1Description = config.tip1_description || defaultConfig.tip1_description;
+      const tip2Title = config.tip2_title || defaultConfig.tip2_title;
+      const tip2Description = config.tip2_description || defaultConfig.tip2_description;
+      const tip3Title = config.tip3_title || defaultConfig.tip3_title;
+      const tip3Description = config.tip3_description || defaultConfig.tip3_description;
+      const tip4Title = config.tip4_title || defaultConfig.tip4_title;
+      const tip4Description = config.tip4_description || defaultConfig.tip4_description;
+      const tip5Title = config.tip5_title || defaultConfig.tip5_title;
+      const tip5Description = config.tip5_description || defaultConfig.tip5_description;
+      const closingMessage = config.closing_message || defaultConfig.closing_message;
+      const hashtags = config.hashtags || defaultConfig.hashtags;
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const cardBackground = config.card_background || defaultConfig.card_background;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const bodyTextColor = config.body_text_color || defaultConfig.body_text_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+
+      document.getElementById('main-title').textContent = mainTitle;
+      document.getElementById('subtitle').textContent = subtitle;
+      document.getElementById('tip1-title').textContent = tip1Title;
+      document.getElementById('tip1-description').textContent = tip1Description;
+      document.getElementById('tip2-title').textContent = tip2Title;
+      document.getElementById('tip2-description').textContent = tip2Description;
+      document.getElementById('tip3-title').textContent = tip3Title;
+      document.getElementById('tip3-description').textContent = tip3Description;
+      document.getElementById('tip4-title').textContent = tip4Title;
+      document.getElementById('tip4-description').textContent = tip4Description;
+      document.getElementById('tip5-title').textContent = tip5Title;
+      document.getElementById('tip5-description').textContent = tip5Description;
+      document.getElementById('closing-message').textContent = closingMessage;
+      document.getElementById('hashtags').textContent = hashtags;
+
+      document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${adjustColor(backgroundColor, -10)} 100%)`;
+
+      const tipCards = document.querySelectorAll('.tip-card');
+      tipCards.forEach(card => {
+        card.style.background = cardBackground;
+        card.style.borderColor = `${textColor}1a`;
+      });
+
+      const footer = document.querySelector('.footer');
+      footer.style.background = cardBackground;
+      footer.style.borderColor = `${textColor}1a`;
+
+      document.querySelectorAll('.header h1, .tip-card h3, .footer h2').forEach(el => {
+        el.style.color = textColor;
+      });
+
+      document.querySelectorAll('.header p').forEach(el => {
+        el.style.color = textColor;
+      });
+
+      document.querySelectorAll('.tip-card p, .footer p').forEach(el => {
+        el.style.color = bodyTextColor;
+      });
+
+      document.querySelectorAll('.tip-number').forEach(el => {
+        el.style.background = `linear-gradient(135deg, ${accentColor} 0%, ${textColor} 100%)`;
+      });
+
+      document.querySelector('.hashtags').style.color = accentColor;
+
+      document.querySelectorAll('.cta-button').forEach(btn => {
+        btn.style.background = `linear-gradient(135deg, ${accentColor} 0%, ${textColor} 100%)`;
+      });
+
+      const baseFontStack = 'Noto Sans Bengali, Georgia, serif';
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      document.querySelector('.header h1').style.fontSize = `${baseSize * 2.5}px`;
+      document.querySelector('.header p').style.fontSize = `${baseSize * 1.2}px`;
+      document.querySelectorAll('.tip-card h3').forEach(el => {
+        el.style.fontSize = `${baseSize * 1.3}px`;
+      });
+      document.querySelectorAll('.tip-card p').forEach(el => {
+        el.style.fontSize = `${baseSize}px`;
+      });
+      document.querySelector('.footer h2').style.fontSize = `${baseSize * 1.8}px`;
+      document.querySelector('.footer p').style.fontSize = `${baseSize * 1.1}px`;
+      document.querySelectorAll('.cta-button').forEach(btn => {
+        btn.style.fontSize = `${baseSize}px`;
+      });
+    }
+
+    function adjustColor(color, percent) {
+      const num = parseInt(color.replace("#",""), 16);
+      const amt = Math.round(2.55 * percent);
+      const R = Math.max(0, Math.min(255, (num >> 16) + amt));
+      const G = Math.max(0, Math.min(255, (num >> 8 & 0x00FF) + amt));
+      const B = Math.max(0, Math.min(255, (num & 0x0000FF) + amt));
+      return "#" + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
+    }
+
+    function shareContent() {
+      const message = document.createElement('div');
+      message.textContent = '❤️ ধন্যবাদ! Keep learning Bangla!';
+      message.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #ff6f3c 0%, #d84315 100%);
+        color: white;
+        padding: 1.5rem 2rem;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        box-shadow: 0 8px 24px rgba(216, 67, 21, 0.4);
+        z-index: 1000;
+        animation: fadeInUp 0.3s ease-out;
+      `;
+      document.body.appendChild(message);
+      setTimeout(() => {
+        message.style.animation = 'fadeInDown 0.3s ease-out reverse';
+        setTimeout(() => message.remove(), 300);
+      }, 2000);
+    }
+
+    function startLearning() {
+      const message = document.createElement('div');
+      message.textContent = '🚀 চমৎকার! Tip 1 দিয়ে শুরু করো!';
+      message.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #ff6f3c 0%, #d84315 100%);
+        color: white;
+        padding: 1.5rem 2rem;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        box-shadow: 0 8px 24px rgba(216, 67, 21, 0.4);
+        z-index: 1000;
+        animation: fadeInUp 0.3s ease-out;
+      `;
+      document.body.appendChild(message);
+      setTimeout(() => {
+        message.style.animation = 'fadeInDown 0.3s ease-out reverse';
+        setTimeout(() => message.remove(), 300);
+      }, 2000);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.card_background || defaultConfig.card_background,
+              set: (value) => {
+                config.card_background = value;
+                window.elementSdk.setConfig({ card_background: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.body_text_color || defaultConfig.body_text_color,
+              set: (value) => {
+                config.body_text_color = value;
+                window.elementSdk.setConfig({ body_text_color: value });
+              }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["main_title", config.main_title || defaultConfig.main_title],
+          ["subtitle", config.subtitle || defaultConfig.subtitle],
+          ["tip1_title", config.tip1_title || defaultConfig.tip1_title],
+          ["tip1_description", config.tip1_description || defaultConfig.tip1_description],
+          ["tip2_title", config.tip2_title || defaultConfig.tip2_title],
+          ["tip2_description", config.tip2_description || defaultConfig.tip2_description],
+          ["tip3_title", config.tip3_title || defaultConfig.tip3_title],
+          ["tip3_description", config.tip3_description || defaultConfig.tip3_description],
+          ["tip4_title", config.tip4_title || defaultConfig.tip4_title],
+          ["tip4_description", config.tip4_description || defaultConfig.tip4_description],
+          ["tip5_title", config.tip5_title || defaultConfig.tip5_title],
+          ["tip5_description", config.tip5_description || defaultConfig.tip5_description],
+          ["closing_message", config.closing_message || defaultConfig.closing_message],
+          ["hashtags", config.hashtags || defaultConfig.hashtags]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99d8378920644e9d',t:'MTc2Mjk3MzQ0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
